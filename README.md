@@ -23,7 +23,7 @@ cd server && npm install && cd ..
 
 Create env files from the examples (never commit them):
 
-- `server/.env`: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `CLIENT_ORIGIN`
+- `server/.env`: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `CLIENT_ORIGIN`
 - `client/.env`: `VITE_API_URL` (leave unset locally)
 
 ## Running
@@ -38,6 +38,8 @@ Frontend: http://localhost:5173
 API: http://localhost:3001
 
 Always start it from the root. When adding a package, `cd` into `client/` or `server/` first and run `npm install <package>` there.
+
+### Ensure .env and no node_modules are committed.
 
 ## How it works
 
