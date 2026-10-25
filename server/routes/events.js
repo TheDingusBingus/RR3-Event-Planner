@@ -1,4 +1,4 @@
-import { supabase } from './supabase.js';
+import { supabase } from '../supabase.js';
 
 const { data, error } = await supabase.from('events').select('*');
 
