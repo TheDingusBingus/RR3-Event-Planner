@@ -1,0 +1,41 @@
+.card {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.venue {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-h);
+}
+
+.meta {
+    font-size: 15px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+}
+
+.label {
+    display: block;
+    font-size: 13px;
+}
+
+.value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-h);
+}
