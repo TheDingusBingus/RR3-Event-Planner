@@ -1,16 +1,13 @@
-import EventsList from "./components/EventsList";
-import { events } from "./data/SampleData";
-import CheckIn from "./components/CheckIn";
+import { Route, Routes } from "react-router";
+import Dashboard from "./pages/Dashboard";
 import "./App.css";
 
 
-function App() {
-  return (
-	<main>
-	  <EventsList events={events}/>
-	  <CheckIn />
-	</main>
-  );
-}
 
-export default App;
+export default function App() {
+  return (
+		<Routes>
+			<Route path="/" element={<Dashboard />} />
+		</Routes>
+	)
+}
