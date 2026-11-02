@@ -1,4 +1,6 @@
-function EventsList({ events, onSelectEvent }) {
+import { Link } from "react-router";
+
+function EventsList({ events }) {
     return (
         <section>
             <h2>Upcoming Events</h2>
@@ -10,7 +12,7 @@ function EventsList({ events, onSelectEvent }) {
                     <p>Time: {event.time}</p>
                     <p>Location: {event.location}</p>
                     <p>Booked: {event.booked}</p>
-                    <button onClick={() => onSelectEvent(event)}>View Details</button>
+                    <Link to={`/events/${event.id}`}>View Details</Link>
                 </article>
             ))}
         </section>

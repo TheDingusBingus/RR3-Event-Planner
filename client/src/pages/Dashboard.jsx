@@ -1,5 +1,4 @@
 import EventsList from '../components/EventsList.jsx'
-import CheckIn from '../components/CheckIn.jsx'
 import { getEvents } from '../api/events.js'
 import { useFetch } from '../hooks/useFetch.js'
 
@@ -13,9 +12,7 @@ export default function Dashboard() {
     <>
       <EventsList
         events={events}
-        onSelectEvent={(event) => console.log(event)}
-      />
-      <CheckIn />
+        onSelectEvent={(event) => console.log(event)} />
     </>
   )
 }
