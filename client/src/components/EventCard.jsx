@@ -1,10 +1,9 @@
 import styles from "./EventCard.module.css";
 
 export default function EventCard({ event }) {
-    const date = new Date(event.event_date).toLocaleDateString("en-GB", {
+    const date = new Date(event.date).toLocaleDateString("en-GB", {
         weekday: "short", day: "numeric", month: "short",
     });
-    const time = event.event_time?.slice(0, 5); // "10:00:00+00" -> "10:00"
 
     const stats = [
         { label: "Booked", value: event.capacity != null ? `${event.booked} / ${event.capacity}` : event.booked },
@@ -16,7 +15,7 @@ export default function EventCard({ event }) {
         <div className={styles.card}>
             <div>
                 <h3 className={styles.venue}>{event.name}</h3>
-                <p className={styles.meta}>{event.location} · {date}{time && `, ${time}`}</p>
+                <p className={styles.meta}>{event.location} · {date}{event.time && `, ${event.time}`}</p>
             </div>
             <div className={styles.stats}>
                 {stats.map((s) => (

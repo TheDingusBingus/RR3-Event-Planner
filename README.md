@@ -6,12 +6,12 @@ Event management web app. React + Vite frontend, Node + Express API, Supabase (P
 
 ```
 client/    React + Vite frontend
-server/    Express API (db.js holds the Supabase client)
+server/    Express API (supabase.js holds the Supabase client)
 ```
 
 ## Setup
 
-Requires Node 12 or newer.
+Requires Node 24 or newer.
 
 ```bash
 git clone https://github.com/TheDingusBingus/RR3-Event-Planner.git
@@ -45,13 +45,13 @@ Always start it from the root. When adding a package, `cd` into `client/` or `se
 
 The frontend calls the API with `/api/...` paths. In development, Vite proxies these to Express, so no CORS setup is needed.
 
-- Pages (what shows at `/events/42`) are handled in the browser by React Router, in `client/src`.
-- Data (what `GET /api/events/42` returns) is handled by Express, in `server/`.
+- Pages (what shows at `/events/3`) are handled in the browser by React Router, in `client/src`.
+- Data (what `GET /api/events/3` returns) is handled by Express, in `server/`.
 - Anything under `/api` is the server. Everything else is a React page.
 
-Database access goes through `server/db.js` only. The Supabase service role key stays on the server and is never put in a `VITE_` variable or sent to the browser.
+Database access goes through `server/supabase.js` only. The Supabase service role key stays on the server and is never put in a `VITE_` variable or sent to the browser.
 
-Live attendee counts: check-ins are stored as rows in Supabase and the frontend polls the API every few seconds.
+Live attendee counts: TBD
 
 ## Deployment
 
