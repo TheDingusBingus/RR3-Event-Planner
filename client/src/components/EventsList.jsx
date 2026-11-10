@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 function EventsList({ events }) {
     return (
         <section>
-            <h2>Upcoming Events</h2>
+            <h1 className="text-lg">Upcoming Events</h1>
             {events.map((event) => (
 
                 

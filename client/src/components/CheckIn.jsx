@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "./ui/button"
+import { Card, CardTitle, CardContent, CardDescription, CardHeader} from "./ui/card";
 
 export default function CheckIn() {
     const [people, setPeople] = useState([
@@ -19,22 +20,26 @@ function toggle(id) {
 const arrived = people.filter((p) => p.arrived).length;
 
 return (
-    <div>
-        <h1>Check In</h1>
-        <p>Arrived: {arrived} / {people.length}</p>
-
-        <ul>
-            {people.map((p) => (
-                <li key={p.id}>
-                    <span>{p.name} {p.dietary && `(${p.dietary})`}</span>
-                    <Button
-                        size = "sm"
-                        onClick={() => toggle(p.id)}>
-                        {p.arrived ? 'Undo' : 'Arrived'}
-                    </Button>
-                </li>
-            ))}
-        </ul>
-    </div>
+    <Card>
+        <CardHeader>
+            <CardTitle>Check In</CardTitle>
+        </CardHeader>
+        
+        <CardContent>
+            <CardDescription>Arrived: {arrived} / {people.length}</CardDescription>
+            <ul>
+                {people.map((p) => (
+                    <li key={p.id}>
+                        <span>{p.name} {p.dietary && `(${p.dietary})`}</span>
+                        <Button
+                            size = "sm"
+                            onClick={() => toggle(p.id)}>
+                            {p.arrived ? 'Undo' : 'Arrived'}
+                        </Button>
+                    </li>
+                ))}
+            </ul>
+        </CardContent>
+    </Card>
 );
 }

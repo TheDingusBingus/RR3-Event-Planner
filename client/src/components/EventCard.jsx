@@ -1,4 +1,4 @@
-import styles from "./EventCard.module.css";
+import { Card, CardTitle, CardContent, CardDescription, CardHeader } from "./ui/card";
 
 
 export default function EventCard({ event }) {
@@ -9,23 +9,25 @@ export default function EventCard({ event }) {
     const stats = [
         { label: "Booked", value: event.capacity != null ? `${event.booked} / ${event.capacity}` : event.booked },
         { label: "Predicted", value: event.predicted },
-        { label: "Volunteers", value: event.volunteers_needed != null ? `${event.volunteers_booked} / ${event.volunteers_needed}` : null },
+        { label: "Volunteers numbers", value: event.volunteers_needed != null ? `${event.volunteers_booked_sum} / ${event.volunteers_needed}` : null },
+        { label: "Volunteer ID's", value: event.volunteers_booked?.join(", ") || null},
     ].filter((s) => s.value != null);
 
     return (
-        <div className={styles.card}>
-            <div>
-                <h3 className={styles.venue}>{event.name}</h3>
-                <p className={styles.meta}>{event.location} · {date}{event.time && `, ${event.time}`}</p>
-            </div>
-            <div className={styles.stats}>
+        <Card>
+            <CardHeader>
+                <CardTitle>{event.name}</CardTitle>
+                <CardDescription>{event.location} · {date}{event.time && `, ${event.time}`}</CardDescription>
+            </CardHeader>
+
+            <CardContent className={"flex flex-wrap justify-between gap-2"}>
                 {stats.map((s) => (
                     <div key={s.label}>
-                        <span className={styles.label}>{s.label}</span>
-                        <span className={styles.value}>{s.value}</span>
+                        <p className={"text-sm"}>{s.label}</p>
+                        <p className={"text-lg"}>{s.value}</p>
                     </div>
                 ))}
-            </div>
-        </div>
+            </CardContent>
+        </Card>
     );
 }

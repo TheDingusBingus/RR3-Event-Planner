@@ -9,8 +9,9 @@ const toEvent = (row) => ({
   time: row.event_time.slice(0, 5),
   capacity: row.capacity,
   predicted: row.predicted,
-  volunteersNeeded: row.volunteersNeeded,
-  volunteersBooked: row.volunteersBooked,
+  volunteers_needed: row.volunteers_needed,
+  volunteers_booked_sum: row.volunteers_booked?.length ?? 0,
+  volunteers_booked: row.volunteers_booked,
 })
 
 
