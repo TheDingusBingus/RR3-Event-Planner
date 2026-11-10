@@ -5,7 +5,7 @@ Event management web app. React + Vite frontend, Node + Express API, Supabase (P
 ## Structure
 
 ```
-client/    React + Vite frontend
+client/    React + Vite frontend + Tailwind with Shad-Cn Components in Base UI
 server/    Express API (supabase.js holds the Supabase client)
 ```
 
@@ -49,22 +49,11 @@ The frontend calls the API with `/api/...` paths. In development, Vite proxies t
 - Data (what `GET /api/events/3` returns) is handled by Express, in `server/`.
 - Anything under `/api` is the server. Everything else is a React page.
 
-Database access goes through `server/supabase.js` only. The Supabase service role key stays on the server and is never put in a `VITE_` variable or sent to the browser.
+Database access goes through `server/supabase.js` only. The Supabase secret key stays on the server and is never put in a `VITE_` variable or sent to the browser.
 
 Live attendee counts: TBD
 
 ## Deployment
-
-The frontend deploys from `client/` to Vercel (Root Directory `client`, Vite preset). Merging to `main` deploys to production, and every PR gets a preview URL. Env vars are set in the Vercel project settings.
-
-`client/vercel.json` sends all paths to `index.html` so refreshing on a React Router URL doesn't 404.
-
-In production the Vite proxy doesn't exist, so the frontend uses `VITE_API_URL` as the API base:
-
-```js
-const API_URL = import.meta.env.VITE_API_URL ?? '';
-fetch(`${API_URL}/api/events`);
-```
 
 The API must allow the frontend's origin through CORS (`CLIENT_ORIGIN`). API hosting: TBD.
 
@@ -82,10 +71,10 @@ git push -u origin feature/short-description
 Open a PR, get a review, squash and merge, delete the branch.
 
 - Branch prefixes: `feature/`, `fix/`, `chore/`
-- Keep PRs small, with a clear title (it becomes the commit message) and a note on how to test. Add screenshots for UI changes.
-- Review within a day where possible.
+- Keep PRs small, with a clear title (it becomes the commit message).
+- Review within a day.
 
-Designers: run `npm run dev`, edit CSS or components in `client/src`, and see changes live. Colors, fonts, and spacing live as CSS variables in one file so visual changes are a one-file edit. Same branch and PR flow as everyone else.
+Designer: run `npm run dev`, shad-cn base theme in index.css - custom vars go in tokens.css, and extra base styling goes in global.css inside the layer base {}. Make it your own - so long as it works and make sense.
 
 ## Rules
 

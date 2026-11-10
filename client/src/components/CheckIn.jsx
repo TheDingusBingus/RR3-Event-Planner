@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "./ui/button"
 
 export default function CheckIn() {
     const [people, setPeople] = useState([
@@ -26,9 +27,11 @@ return (
             {people.map((p) => (
                 <li key={p.id}>
                     <span>{p.name} {p.dietary && `(${p.dietary})`}</span>
-                    <button onClick={() => toggle(p.id)}>
+                    <Button
+                        size = "sm"
+                        onClick={() => toggle(p.id)}>
                         {p.arrived ? 'Undo' : 'Arrived'}
-                    </button>
+                    </Button>
                 </li>
             ))}
         </ul>

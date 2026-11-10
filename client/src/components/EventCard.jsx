@@ -1,5 +1,6 @@
 import styles from "./EventCard.module.css";
 
+
 export default function EventCard({ event }) {
     const date = new Date(event.date).toLocaleDateString("en-GB", {
         weekday: "short", day: "numeric", month: "short",

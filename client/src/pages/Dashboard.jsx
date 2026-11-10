@@ -14,5 +14,6 @@ export default function Dashboard() {
         events={events}
         onSelectEvent={(event) => console.log(event)} />
     </>
+    
   )
 }
