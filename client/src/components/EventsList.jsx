@@ -1,22 +1,30 @@
+import EventCard from "./EventCard.jsx";
 import { Link } from "react-router";
+import { Button } from "./ui/button";
 
 function EventsList({ events }) {
     return (
         <section>
-            <h2>Upcoming Events</h2>
-
+            <h1 className="text-lg">Upcoming Events</h1>
             {events.map((event) => (
-                <article key={event.id} className="event-card">
-                    <h3>{event.name}</h3>
-                    <p>Date: {event.date}</p>
-                    <p>Time: {event.time}</p>
-                    <p>Location: {event.location}</p>
-                    <p>Booked: {event.booked}</p>
-                    <Link to={`/events/${event.id}`}>View Details</Link>
-                </article>
+
+                
+                <div key={event.id} className="mb-2">
+                <EventCard  event={event} />
+            
+                <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full"
+                    nativeButton={false}
+                    render={<Link to={`/events/${event.id}`} />}
+                >Open Event</Button>
+
+            </div>
             ))}
         </section>
-    );
+
+    )
 }
 
 export default EventsList;

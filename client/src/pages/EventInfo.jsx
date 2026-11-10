@@ -18,6 +18,7 @@ export default function EventInfomation() {
     <>
       <EventCard event = {event} />
       <CheckIn eventId = {event.id}/>
+      
     </>
   )
 }
