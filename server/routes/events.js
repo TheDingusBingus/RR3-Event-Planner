@@ -7,7 +7,7 @@ const cols = 'id, name, location, event_date, event_time, booked, capacity, pred
 
 router.get('/', async (req, res) => {
   const { data, error } = await supabase 
-    .from('events') 
+    .from('events_legacy') 
     .select(cols)
     .order ('event_date', { ascending: true })
     .order ('event_time', { ascending: true })
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
   }
 
   const { data, error } = await supabase 
-    .from('events') 
+    .from('events_legacy') 
     .select(cols)
     .eq('id', id)
     .single()
