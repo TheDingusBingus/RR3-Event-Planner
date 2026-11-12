@@ -1,45 +1,50 @@
-import { useState } from "react";
-import { Button } from "./ui/button"
-import { Card, CardTitle, CardContent, CardDescription, CardHeader} from "./ui/card";
+import { useState, useEffect } from "react";
+import { Button } from "./ui/button";
+import { Card, CardTitle, CardContent, CardDescription, CardHeader } from "./ui/card";
 
-export default function CheckIn() {
-    const [people, setPeople] = useState([
-        {id: 1, name: 'Jaedyn Wong', dietary: '', arrived: false},
-        {id: 2, name: 'John Doe', dietary: 'Nut Allergy', arrived: false},
-        {id: 3, name: 'Jane Smith', dietary: 'Halal', arrived: true},
-        {id: 4, name: 'Alice Johnson', dietary: 'Vegetarian', arrived: false},
+export default function CheckIn({ eventId }) {
+  const [people, setPeople] = useState([]);
 
-]);
+  useEffect(() => {
+    fetch(`/api/events/${eventId}/attendees`)
+      .then((res) => res.json())
+      .then(setPeople)
+      .catch(console.error);
+  }, [eventId]);
 
-function toggle(id) {
-    setPeople(
-        people.map((p) => (p.id === id ? { ...p, arrived: !p.arrived } : p))
+  async function toggle(id, arrived) {
+    await fetch(`/api/events/${eventId}/attendees/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ arrived: !arrived }),
+    });
+    setPeople((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, arrived: !arrived } : p))
     );
-}
+  }
 
-const arrived = people.filter((p) => p.arrived).length;
+  const arrived = people.filter((p) => p.arrived).length;
 
-return (
+  return (
     <Card>
-        <CardHeader>
-            <CardTitle>Check In</CardTitle>
-        </CardHeader>
-        
-        <CardContent>
-            <CardDescription>Arrived: {arrived} / {people.length}</CardDescription>
-            <ul>
-                {people.map((p) => (
-                    <li key={p.id}>
-                        <span>{p.name} {p.dietary && `(${p.dietary})`}</span>
-                        <Button
-                            size = "sm"
-                            onClick={() => toggle(p.id)}>
-                            {p.arrived ? 'Undo' : 'Arrived'}
-                        </Button>
-                    </li>
-                ))}
-            </ul>
-        </CardContent>
+      <CardHeader>
+        <CardTitle>Check In</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription>Arrived: {arrived} / {people.length}</CardDescription>
+        <ul>
+          {people.map((p) => (
+            <li key={p.id}>
+              <span>
+                {p.name} {p.dietary.length > 0 && `(${p.dietary.join(", ")})`}
+              </span>
+              <Button size="sm" onClick={() => toggle(p.id, p.arrived)}>
+                {p.arrived ? "Undo" : "Arrived"}
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
     </Card>
-);
+  );
 }
