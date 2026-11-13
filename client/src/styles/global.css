@@ -1,4 +1,41 @@
 @layer base {
+  body {
+    font-size: var(--text-body);
+    line-height: 1.5;
+  }
 
+  h1 {
+    font-size: var(--text-heading);
+    font-weight: 700;
+  }
 
+  h2 {
+    font-size: var(--text-subheading);
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: var(--primary-hover);
+  }
+
+  /* so you can see where you are when using tab */
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* buttons need to be at least 44px tall so they're easy to tap */
+  button {
+    min-height: 44px;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 600;
+  }
 }

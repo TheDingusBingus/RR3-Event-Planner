@@ -1,0 +1,56 @@
+/* our colours and sizes from the design spec */
+
+:root {
+  /* main colours */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --primary-hover: #1d4ed8;
+
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+
+  --destructive: #b91c1c;
+  --border: #cbd5e1;
+  --input: #64748b;
+  --ring: #2563eb;
+
+  /* sidebar */
+  --sidebar: #f1f5f9;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #1e293b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e2e8f0;
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #cbd5e1;
+  --sidebar-ring: #2563eb;
+
+  /* status colours - green, amber, red */
+  --status-ok: #166534;
+  --status-ok-bg: #dcfce7;
+  --status-warning: #92400e;
+  --status-warning-bg: #fef3c7;
+  --status-danger: #b91c1c;
+  --status-danger-bg: #fee2e2;
+
+  /* text sizes */
+  --text-small: 0.875rem; /* 14px */
+  --text-body: 1rem; /* 16px */
+  --text-subheading: 1.25rem; /* 20px */
+  --text-heading: 1.5rem; /* 24px */
+  --text-stat: 2rem; /* 32px for the big numbers */
+
+  /* corners and shadow */
+  --radius: 0.5rem;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06);
+}
